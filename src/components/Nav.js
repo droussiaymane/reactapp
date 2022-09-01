@@ -1,9 +1,10 @@
 import React from 'react'
 import {Link} from "react-router-dom"; 
 import authService from '../services/auth.service';
-
+import { useNavigate } from 'react-router-dom';
 const Nav = () => {
 
+  const navigate=useNavigate();
   const role=authService.getCurrentRole();
   const id=authService.getCurrentUserId();
   let islogged=authService.islogged();
@@ -13,7 +14,7 @@ const Nav = () => {
   
   const logoutHandler=()=>{
     authService.logout();
-    //navigate("/login");
+    navigate("/login");
     
   }
   return (

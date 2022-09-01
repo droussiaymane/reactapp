@@ -77,7 +77,7 @@ class AddQuizModal extends Component {
     
       addQuiz = () => {
         let newQuiz = {
-          teacherId:authService.getCurrentUserId(),
+          teacherId:this.props.teacherId,
           noQuestions: 0,
           isActive: 0,
           dueDate: this.state.dueDate,

@@ -95,18 +95,11 @@ class UploadFilesComponents extends Component {
 
   return (<>
   {currentFile && (
-          <div className="progress">
-            <div
-              className="progress-bar progress-bar-info progress-bar-striped"
-              role="progressbar"
-              aria-valuenow={progress}
-              aria-valuemin="0"
-              aria-valuemax="100"
-              style={{ width: progress + "%" }}
-            >
-              {progress}%
-            </div>
-          </div>
+    <div class="w-full bg-gray-200 rounded-full">
+    <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{ width: progress + "%" }}> {progress}%</div>
+  </div>
+
+          
         )}
     <div class="flex justify-center  uploadTop">
       

@@ -192,7 +192,7 @@ Quiz {element.id} {element.isActive ? 'is visible' : 'is not visible'} without s
 <div className='uploadTop'>
 
 
-<AddQuizModal setQuizAdded={() => setQuizAdded(quizAdded+1)}/>
+<AddQuizModal teacherId={params.teacherId} setQuizAdded={() => setQuizAdded(quizAdded+1)}/>
     </div>
     </div>
     </>

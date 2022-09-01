@@ -132,18 +132,17 @@ class EditQuizTeacher extends Component {
   }
 
   render() {
-    const { showModal} = this.state
+    const { numberOfQuestions, isActive, dueDate, timerH, timerM ,showModal} = this.state
     return (
       <>
-         <button
-        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-        type="button"
-        onClick={() => this.setState({
+  
+
+<button onClick={() => this.setState({
           showModal:true
-        })}
-      >
-        Open regular modal
-      </button>
+        })} type="button" class="inline-block px-6 py-2.5 bg-blue-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-lg hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Edit</button>
+
+
+    
       {showModal ? (
         <>
           <div
@@ -169,43 +168,132 @@ class EditQuizTeacher extends Component {
                   </button>
                 </div>
                 {/*body*/}
+
+
                 <div className="relative p-6 flex-auto">
-                <div class="element">
-              <label>Question</label>
-              <input
-                type="text" value={this.state.editQuestion.question} onChange={this.handleQuestionChange}
-              />
-            </div>
-            {this.state.answerList.map((e, index) => {
-                return  (
-                <div class="form-group row">
-                    <div class="element">
-                    <label>Answer {index+1}</label>
-                    <input id={e.id}
-                        type="text" value={e.answer} onChange={this.handleAnswerChange}
-                    />
-                    </div>
+                  <div class="block p-6 rounded-lg shadow-lg bg-white max-w-md">
+                  <div class="form-group mb-6">
+                  
+<div class="form-group mb-6">
+  <label>Question : </label>
+<input  type="text" value={this.state.editQuestion.question} onChange={this.handleQuestionChange} placeholder='Question' class="form-control
+block
+w-full
+px-3
+py-1.5
+text-base
+font-normal
+text-gray-700
+bg-white bg-clip-padding
+border border-solid border-gray-300
+rounded
+transition
+ease-in-out
+m-0
+focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInputEmail2"
+/>
+</div>
+    </div>
 
-                    <div class="element">
-                    {e.isCorrect ? <input class="form-check-input" type="checkbox"
-                        id={"c" + e.id}
-                        name="text"
-                        onChange={this.handleCorrectChange}
-                        checked
-                        />
-                        :
-                        <input class="form-check-input" type="checkbox"
-                        id={"c" + e.id}
-                        name="text"
-                        onChange={this.handleCorrectChange}/>
-                    }
-                    </div>
 
-                    <button variant="outline-danger" onClick={() => this.deleteAnswer(e)}>Delete</button>
-                </div>
-                )
-              })}
-                </div>
+    {this.state.answerList.map((e, index) => {
+      return  (
+      <div class="form-group row">
+
+    <div class="grid grid-cols-1 gap-4">
+    <div class="flex flex-row ...">
+      
+<label className="answerPadding">Answer </label>
+<input  id={e.id}
+              type="text" value={e.answer} onChange={this.handleAnswerChange} class="form-control block
+w-full
+px-3
+py-1.5
+text-base
+font-normal
+text-gray-700
+bg-white bg-clip-padding
+border border-solid border-gray-300
+rounded
+transition
+ease-in-out
+m-0
+focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"  placeholder='Answer'
+/>   <div className="checkboxStyle">          <div class="form-check">
+
+
+
+{e.isCorrect ? 
+<input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer" type="checkbox"  
+    name="text"    id={"c" + e.id}
+    onChange={this.handleCorrectChange} checked />
+              :
+             
+<input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer" type="checkbox"  
+    name="text"    id={"c" + e.id}
+    onChange={this.handleCorrectChange}  />
+          }
+
+
+
+</div>
+</div>
+<div className='labelStyle'>   <label >check</label>
+</div>
+</div>
+    </div>
+ 
+   
+         
+    <button onClick={() => this.deleteAnswer(e)} type="button" class="w-full inline-block px-6 py-2 border-2 border-red-600 text-red-600 font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
+    Delete
+</button>
+      </div>
+      )
+    })}
+</div>
+   
+  
+ 
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
@@ -220,9 +308,12 @@ class EditQuizTeacher extends Component {
                   <button
                     className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => this.setState({
+                    onClick={() => {
+                      this.setState({
                       showModal:false
-                    })}
+                    });
+                  this.handleSave();
+                  }}
                   >
                     Save Changes
                   </button>
@@ -239,10 +330,7 @@ class EditQuizTeacher extends Component {
 
 
 
-        <div className="d-flex align-items-center justify-content-center">
-         <button variant="outline-info" onClick = {this.handleShow}> Edit </button>
-        </div>
-        
+     
       
       </>
     );    //return
