@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.paddingBottomButton{
+    padding-bottom: 30px;
+}
+
+.uploadclass{
+    padding-top: 35px;
+    padding-left: 30px;
+}
+
+.uploadTop{
+    padding-top: 35px;
+}
+.centerForm{
+    text-align: -webkit-center;
+}
+.checkboxStyle{
+    padding-left: 23px;
+    padding-top: 6px;
+}
+.labelStyle{
+    padding-top: 5px;
+    padding-left: 6px;
+}
+.buttonVisible{
+    padding-bottom: 30px;
+}

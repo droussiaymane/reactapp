@@ -3,7 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Home from './pages/Home';
-
+import Teacher from './components/Teacher';
+import Student from './components/Student';
+import Upload from './components/Upload';
+import TeacherQuiz from './components/TeacherQuiz';
 function App() {
   
 
@@ -17,7 +20,12 @@ function App() {
                    path="/home"
                    element={<Home/>} />
 
-
+        <Route element={<Teacher/>} path="/teacher/:teacherId"/>
+         
+        <Route element={<Student/>}  path="/student/:studentId"/>
+        <Route element={<Upload/>} path= "/upload"/>
+        <Route element={<TeacherQuiz/>}  path="/teacher/:teacherId/quiz/:quizId"/>
+              
       </Routes>
     </BrowserRouter>
   );

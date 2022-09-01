@@ -1,10 +1,8 @@
 import React from 'react'
 import {Link} from "react-router-dom"; 
 import authService from '../services/auth.service';
-import { useNavigate } from "react-router-dom";
 
 const Nav = () => {
-  const navigate = useNavigate();
 
   const role=authService.getCurrentRole();
   const id=authService.getCurrentUserId();
@@ -15,7 +13,7 @@ const Nav = () => {
   
   const logoutHandler=()=>{
     authService.logout();
-    navigate("/login");
+    //navigate("/login");
     
   }
   return (
@@ -37,17 +35,20 @@ const Nav = () => {
           
 
           <li>
-          <Link to={studentLink}>
+        
         { role && role=="ROLE_STUDENT" ? ( 
+            <Link to={studentLink}>
             <a class="text-white transition hover:text-white/75">
                 Student
               </a>
+              </Link>
             ) : ( 
+              <Link to={teacherLink}>
               <a class="text-white transition hover:text-white/75" >
                 Teacher
               </a>
+              </Link>
            ) }
-           </Link>
            </li>
            
           </ul>}    
