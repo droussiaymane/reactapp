@@ -6,9 +6,10 @@ import Home from './pages/Home';
 import Teacher from './components/Teacher';
 import Student from './components/Student';
 import Upload from './components/Upload';
-import TeacherQuiz from './components/TeacherQuiz';
+import StudentQuiz from './components/StudentQuiz';
 import TeacherQuizId from './components/TeacherQuizId';
 import axios from 'axios';
+
 function App() {
   const user = JSON.parse(localStorage.getItem('user'));
   if (user) {
@@ -32,7 +33,8 @@ function App() {
         <Route element={<Student/>}  path="/student/:studentId"/>
         <Route element={<Upload/>} path= "/upload"/>
         <Route exact element={<TeacherQuizId/>}  path="/teacher/:teacherId/quiz/:quizId"/>
-              
+        <Route exact path="/student/:studentId/quiz/:quizId" element={<StudentQuiz/>}/>
+   
       </Routes>
     </BrowserRouter>
   );
